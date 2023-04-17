@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}User{% endblock %}
+
+{% block body %}
+    <h1>User List</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Firstname</th>
+                <th>Lastname</th>
+                <th>Age</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for user in users %}
+            <tr>
+                <td>{{ user.firstname }}</td>
+                <td>{{ user.lastname }}</td>
+                <td>{{ user.age }}</td>
+                <td>
+                    <a class="btn btn-info" href="{{ path('show_articles_by_user', {'id': user.id}) }}">Articles</a>
+                    {% if is_granted('ROLE_USER') %}
+                        <a class="btn btn-primary" href="{{ path('app_user_show', {'id': user.id}) }}">show</a>
+                        <a class="btn btn-warning" href="{{ path('app_user_edit', {'id': user.id}) }}">edit</a>
+                    {% endif %}
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    {% if is_granted('ROLE_USER') %}
+        <a class="btn btn-primary" href="{{ path('app_user_new') }}">Create new</a>
+    {% endif %}
+{% endblock %}

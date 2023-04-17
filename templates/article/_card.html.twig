@@ -1,0 +1,20 @@
+<div class="card mb-3">
+    <div class="card-body">
+        <div class="d-flex justify-content-between"> 
+            <div> 
+                <h5 class="card-title">{{ article.title }}</h5>
+                <h6 class="card-subtitle mb-2 text-muted">{{ article.user.firstname|first }}. {{ article.user.lastname }} - {{ article.createdAt ? article.createdAt|date('d/m/Y') : '' }}</h6>
+                <h6 class="card-subtitle my-2 text-muted"><em>Category: <strong>{{ article.category.name }}</strong></em></h6>
+            </div> 
+            <div>
+                {% if article.liked %}
+                    <a style="font-size: 25px;" href="{{ path('app_article_like', {'id': article.id}) }}"><i class="fa-solid fa-heart"></i></a>
+                {% else %}
+                    <a style="font-size: 25px;" href="{{ path('app_article_like', {'id': article.id}) }}"><i class="fa-regular fa-heart"></i></a>
+                {% endif %}
+            </div>
+        </div>
+        <p class="card-text">{{ article.Content }}</p>
+        <a href="{{ path('app_article_show', {'id': article.id}) }}" class="card-link btn btn-primary">Show</a>
+    </div>
+</div>

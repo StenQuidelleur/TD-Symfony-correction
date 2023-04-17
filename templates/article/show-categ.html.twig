@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Articles - {{ category.name }}{% endblock %}
+
+{% block body %}
+<div class="container">
+    <h1 class="text-center mb-5">Articles - {{ category.name }}</h1>
+    {% for article in articles %}
+        {% include 'article/_card.html.twig' with  {'article': article } %}
+    {% else %}
+        <p colspan="6">no records found</p>
+    {% endfor %}
+</div>
+{% endblock %}

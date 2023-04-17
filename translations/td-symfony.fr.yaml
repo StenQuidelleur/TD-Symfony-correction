@@ -1,0 +1,7 @@
+navbar:
+  homepage: Accueil
+  user: Utilisateur
+  category: Categories
+  article: Ajouter article
+  login: Se connecter
+  logout: Se déconnecter

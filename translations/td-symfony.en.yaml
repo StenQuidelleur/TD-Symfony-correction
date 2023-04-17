@@ -1,0 +1,7 @@
+navbar:
+  homepage: Homepage
+  user: User
+  category: Categories
+  article: New article
+  login: Login
+  logout: Logout
